@@ -25,26 +25,6 @@ def calculate():
 
     messagebox.showinfo("Результаты", result)
 
-def generate_numbers():
-    file_name = filedialog.asksaveasfilename(defaultextension=".txt", filetypes=[("Text files", "*.txt"), ("All files", "*.*")])
-    if not file_name:
-        return
-
-    with open(file_name, 'w') as temp_file:
-        for _ in range(10):
-            num = randint(1, 50)
-            temp_file.write(f"{num} ")
-
-    with open(file_name, 'r') as temp_file:
-        content = temp_file.read()
-
-    number_list = list(map(int, content.split()))
-
-    if number_list:
-        average = sum(number_list) / len(number_list)
-        messagebox.showinfo("Сгенерированные числа", f"Числа: {content}\nСр. значение: {average}")
-    else:
-        messagebox.showinfo("Информация", "Файл пуст")
 
 root = tk.Tk()
 root.title("Калькулятор и генератор чисел")
